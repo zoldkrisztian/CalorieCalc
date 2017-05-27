@@ -56,12 +56,13 @@ public class LoginViewController {
 	private TableColumn<User, String> userColumn;
 
 	@FXML
+	@SuppressWarnings("checkstyle:javadocmethod")
 	private Label userNotPickErrorMessage;
 
 	@FXML
 	@SuppressWarnings("checkstyle:javadocmethod")
 	public void initialize() {
-			userColumn.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getUserName()));
+		userColumn.setCellValueFactory(celldata -> new SimpleStringProperty(celldata.getValue().getUserName()));
 	}
 
 	@FXML

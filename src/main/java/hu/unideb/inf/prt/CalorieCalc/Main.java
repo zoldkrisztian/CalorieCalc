@@ -51,6 +51,7 @@ public class Main extends Application {
 
 	/**
 	 * Viszaadja a {@code Main} osztály loggerét.
+	 * 
 	 * @return A {@code Main} osztály loggere.
 	 */
 	public static Logger getLogger() {
@@ -227,7 +228,6 @@ public class Main extends Application {
 
 	}
 
-	
 	@SuppressWarnings("checkstyle:javadocmethod")
 	public void showWeeklyStatistics(User user) {
 		Stage stage = new Stage();
@@ -251,11 +251,7 @@ public class Main extends Application {
 	 * @return Egy {@code User} típusú objektumot.
 	 */
 	public User getUserByUserName(String username) {
-		return getUsers()
-				.stream()
-				.filter(u -> u.getUserName().equals(username))
-				.findFirst()
-				.orElse(null);
+		return getUsers().stream().filter(u -> u.getUserName().equals(username)).findFirst().orElse(null);
 	}
 
 	/**
