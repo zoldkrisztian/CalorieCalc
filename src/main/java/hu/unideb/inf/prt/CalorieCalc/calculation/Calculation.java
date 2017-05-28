@@ -82,8 +82,13 @@ public class Calculation {
 	 * @return A {@code user} testzsír százalékát.
 	 */
 	public static double getFatPercentage(User user) {
-		int gender = (user.getGender() == Gender.FEMALE) ? 0 : 1;
-		return (1.2 * user.getBodyWeight() / getBMI(user)) + (0.23 * user.getAge()) - (10.8 * gender) - 5.4;
+		Gender gender = user.getGender();
+		if(gender == Gender.FEMALE){
+			return (1.2 * getBMI(user)) + (0.23 * user.getAge()) - 5.4;
+		}else if(gender == Gender.MALE){
+			return (1.2 * getBMI(user)) + (0.23 * user.getAge()) - 10.8 - 5.4;
+		}
+		return 0;
 	}
 
 	/**
@@ -266,6 +271,13 @@ public class Calculation {
 	 */
 	public static void resetIntakeNutrients(List<User> users) {
 		for (User user : users) {
+			if (LocalDate.now().isBefore(user.getDay())) {
+				user.setDay(LocalDate.now());
+				user.setIntakeCarbohydrate(0.0);
+				user.setIntakeProtein(0.0);
+				user.setIntakeFat(0.0);
+				user.setIntakeBMR(0.0);
+			}else
 			if (LocalDate.now().minusDays(1).isAfter(user.getDay())
 					|| LocalDate.now().minusDays(1).equals(user.getDay())) {
 				if (user.getWeek().size() >= 6)
@@ -277,13 +289,6 @@ public class Calculation {
 				user.setIntakeProtein(0.0);
 				user.setIntakeFat(0.0);
 				user.setIntakeBMR(0.0);
-			} else if (LocalDate.now().isBefore(user.getDay())) {
-				user.setDay(LocalDate.now());
-				user.setIntakeCarbohydrate(0.0);
-				user.setIntakeProtein(0.0);
-				user.setIntakeFat(0.0);
-				user.setIntakeBMR(0.0);
-
 			}
 		}
 	}
@@ -298,15 +303,19 @@ public class Calculation {
 	 */
 	public static void fillSkippedDays(List<DailyIntakeOfNutrients> week) {
 		int difference;
+		
 		if (week.size() >= 1) {
 			Main.getLogger().info("Utolsó belépés óta eltelt napok: "
 					+ week.get(week.size() - 1).getDate().until(LocalDate.now()).getDays());
+			
 			if ((difference = week.get(week.size() - 1).getDate().until(LocalDate.now()).getDays()) > 0) {
+				
 				for (int i = 0; i < difference - 1; i++) {
 					DailyIntakeOfNutrients filler = new DailyIntakeOfNutrients(0.0, 0.0, 0.0,
 							week.get(week.size() - 1).getDate().plusDays(1));
 					week.add(filler);
 				}
+				
 				int weekSize = week.size();
 				if (weekSize > 7) {
 					weekSize -= 7;
@@ -314,6 +323,7 @@ public class Calculation {
 						week.remove(0);
 					}
 				}
+				
 			} else if (difference < 0) {
 				difference = Math.abs(difference);
 				if (difference < week.size())

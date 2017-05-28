@@ -64,6 +64,15 @@ public class RegistrationViewController {
 
 	@FXML
 	private Label userExistErrorMessage;
+	
+	@FXML
+	private Label userNameErrorMessage;
+	
+	@FXML
+	private Label lastNameErrorMessage;
+	
+	@FXML
+	private Label firstNameErrorMessage;
 
 	@FXML
 	private Label genderErrorMessage;
@@ -109,11 +118,27 @@ public class RegistrationViewController {
 			userExistErrorMessage.setVisible(false);
 		}
 
-		if (userNameField.getText().isEmpty() || lastNameField.getText().isEmpty()
-				|| firstNameField.getText().isEmpty()) {
+		if (userNameField.getText().isEmpty()) {
+			userNameErrorMessage.setVisible(true);
 			correct = false;
+		} else {
+			userNameErrorMessage.setVisible(false);
 		}
 
+		if (lastNameField.getText().isEmpty()) {
+			lastNameErrorMessage.setVisible(true);
+			correct = false;
+		} else {
+			lastNameErrorMessage.setVisible(false);
+		}
+		
+		if (firstNameField.getText().isEmpty()) {
+			firstNameErrorMessage.setVisible(true);
+			correct = false;
+		} else {
+			firstNameErrorMessage.setVisible(false);
+		}
+		
 		if (genderComboBox.getSelectionModel().selectedItemProperty().getValue() == null) {
 			genderErrorMessage.setVisible(true);
 			correct = false;

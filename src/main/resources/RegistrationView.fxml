@@ -40,7 +40,6 @@
             <Label styleClass="reg-text" text="Felhasználónév" GridPane.rowIndex="1" />
             <Label styleClass="reg-text" text="Vezetéknév" GridPane.rowIndex="3" />
             <Label styleClass="reg-text" text="Keresztnév" GridPane.rowIndex="5" />
-            <Label text="Label" GridPane.rowIndex="7" />
             <Label styleClass="reg-text" text="Kor" GridPane.rowIndex="8">
                <font>
                   <Font name="Arial" size="12.0" />
@@ -53,15 +52,37 @@
                   <Button mnemonicParsing="false" onAction="#pressRegistrationButton" styleClass="reg-button" text="Regisztráció" />
               </buttons>
             </ButtonBar>
-            <ComboBox fx:id="genderComboBox" prefWidth="200.0" promptText="Nem" styleClass="combo-box" GridPane.rowIndex="7" />
-            <ComboBox fx:id="goalComboBox" prefWidth="200.0" promptText="Cél" styleClass="combo-box" GridPane.rowIndex="14" />
+            <ComboBox fx:id="genderComboBox" prefWidth="200.0" promptText="Nem" styleClass="combo-box" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="1.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="1.0" />
+               </padding></ComboBox>
+            <ComboBox fx:id="goalComboBox" prefWidth="200.0" promptText="Cél" styleClass="combo-box" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets left="1.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="1.0" />
+               </padding></ComboBox>
             <TextField fx:id="userNameField" GridPane.rowIndex="2" />
             <TextField fx:id="lastNameField" GridPane.rowIndex="4" />
             <TextField fx:id="firstNameField" GridPane.rowIndex="6" />
             <TextField fx:id="ageField" GridPane.rowIndex="9" />
             <TextField fx:id="bodyheightField" GridPane.rowIndex="11" />
             <TextField fx:id="bodyweightField" GridPane.rowIndex="13" />
+            <Label fx:id="userExistErrorMessage" text="Felhasználónév foglalt!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
             <Label fx:id="genderErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="ageErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -76,11 +97,6 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="ageErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
-            </Label>
             <Label fx:id="goalErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="14">
                <GridPane.margin>
                   <Insets right="20.0" />
@@ -91,7 +107,17 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="userExistErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="lastNameErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="firstNameErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="userNameErrorMessage" text="Kötelező megadni!" textFill="RED" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>

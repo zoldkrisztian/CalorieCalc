@@ -42,7 +42,13 @@
             <TextField fx:id="bodyheightField" GridPane.rowIndex="7" />
             <TextField fx:id="bodyweightField" GridPane.rowIndex="9" />
             <Label styleClass="reg-text" text="Testsúly" GridPane.rowIndex="8" />
-            <ComboBox fx:id="goalComboBox" prefWidth="200.0" promptText="Cél" styleClass="reg-text" GridPane.rowIndex="10" />
+            <ComboBox fx:id="goalComboBox" prefWidth="200.0" promptText="Cél" styleClass="reg-text" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="1.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="1.0" />
+               </padding></ComboBox>
             <Button mnemonicParsing="false" onAction="#pressedCancelButton" styleClass="reg-button" text="Mégsem" GridPane.rowIndex="12" />
             <Button mnemonicParsing="false" onAction="#pressedModifyButton" styleClass="reg-button" text="Módosítás" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER">
                <GridPane.margin>
