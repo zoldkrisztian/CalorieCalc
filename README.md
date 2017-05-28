@@ -26,4 +26,4 @@ A menüben a **Statisztika** tételre klikkelve, majd a **Heti statisztika** té
   - A diéta és súlytartás kiszámításának képlete a http://www.lifetilt.hu/blog/2012/10/dietarol-es-kaloriaszamlalasrol-kezdoknek-i-shapeshifter-modra/ oldalon található.
   - A tápanyagok kalória értékéhez ezt a weboldalt használtam: http://www.patikamagazin.hu/cikk/index/13737 .
   - A testtömeg index (BMI) kiszámításának képlete a http://www.whathealth.com/bmi/formula.html oldalon található.
-  - A estzsírszázalék kiszámításának képlete a http://femina.hu/fogyokura/testzsirszazalek-szamitas/ oldalon található.
+  - A testzsírszázalék kiszámításának képlete a http://www.livestrong.com/article/102670-formula-calculate-body-fat-percentage/ oldalon található.
