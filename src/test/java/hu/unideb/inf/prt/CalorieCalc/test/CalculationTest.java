@@ -2,15 +2,23 @@ package hu.unideb.inf.prt.CalorieCalc.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import hu.unideb.inf.prt.CalorieCalc.Main;
 import hu.unideb.inf.prt.CalorieCalc.DAO.UserDAOImpl;
 import hu.unideb.inf.prt.CalorieCalc.calculation.Calculation;
 import hu.unideb.inf.prt.CalorieCalc.model.DailyIntakeOfNutrients;
@@ -378,5 +386,36 @@ public class CalculationTest {
 	public TemporaryFolder tmp = new TemporaryFolder();
 
 	public UserDAOImpl dao = new UserDAOImpl();
+
+	@Test
+	public void saveUsersTest() throws IOException {
+		tmp.create();
+		user = userHusband;
+		user.setDeletedUser(false);
+		users.clear();
+		users.add(user);
+		Main.getUsers().clear();
+		dao.saveUsers(users, Paths.get(tmp.getRoot().toString()));
+		dao.loadUsers(tmp.getRoot().toPath());
+		assertEquals(user.toString(), Main.getUsers().get(0).toString());
+
+	}
+
+	@Test
+	public void saveDeletedUsersTest() throws IOException {
+		tmp.create();
+		dao.loadUsers(tmp.getRoot().toPath());
+		user = userHusband;
+		user.setDeletedUser(true);
+		users.clear();
+		users.add(user);
+		Main.getUsers().clear();
+		Gson gson = new GsonBuilder().create();
+		FileWriter filewriter = new FileWriter(new File(tmp.getRoot().toString(), user.getUserName() + ".json"));
+		gson.toJson(user, filewriter);
+		filewriter.close();
+		dao.saveUsers(users, Paths.get(tmp.getRoot().toString()));
+		assertEquals(false, new File(tmp.getRoot().toString(), user.getUserName() + ".json").exists());
+	}
 
 }
