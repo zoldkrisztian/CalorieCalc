@@ -202,6 +202,7 @@
 				<configuration>
         				<quiet>true</quiet>
        					 <formats>
+						<format>html</format>
             					<format>xml</format>
         				</formats>
         				<instrumentation>
