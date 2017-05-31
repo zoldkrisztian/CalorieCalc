@@ -1,5 +1,5 @@
 /**
- * A program üzleti logikáját tartalmazó osztály.
+ * A program üzleti logikáját tartalmazó csomag.
  * 
  * @author Zöld Krisztián
  *
